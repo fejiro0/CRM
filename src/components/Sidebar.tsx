@@ -11,34 +11,36 @@ interface SidebarProps {
 export function Sidebar({ sections, activeSection, onSelectSection, onNotificationsClick }: SidebarProps) {
   return (
     <aside className="sidebar" aria-label="Primary">
-      <div className="sidebar__brand">
-        <span className="sidebar__mark" aria-hidden>Pulse</span>
-        <p className="sidebar__subtitle">CRM for Tech Teams</p>
+      <div>
+        <div className="sidebar__brand">
+          <span className="sidebar__mark" aria-hidden>Pulse</span>
+          <p className="sidebar__subtitle">CRM for Tech Teams</p>
+        </div>
+        <nav aria-label="Main sections">
+          <ul className="sidebar__nav">
+            {sections.map((section) => {
+              const Icon = section.icon
+              const isActive = activeSection.id === section.id
+              return (
+                <li key={section.id}>
+                  <button
+                    type="button"
+                    className={`sidebar__link ${isActive ? 'sidebar__link--active' : ''}`}
+                    aria-current={isActive ? 'page' : undefined}
+                    onClick={() => onSelectSection(section)}
+                  >
+                    <Icon aria-hidden size={20} />
+                    <span className="sidebar__text">
+                      <span className="sidebar__label">{section.label}</span>
+                      <span className="sidebar__description">{section.description}</span>
+                    </span>
+                  </button>
+                </li>
+              )
+            })}
+          </ul>
+        </nav>
       </div>
-      <nav aria-label="Main sections">
-        <ul className="sidebar__nav">
-          {sections.map((section) => {
-            const Icon = section.icon
-            const isActive = activeSection.id === section.id
-            return (
-              <li key={section.id}>
-                <button
-                  type="button"
-                  className={`sidebar__link ${isActive ? 'sidebar__link--active' : ''}`}
-                  aria-current={isActive ? 'page' : undefined}
-                  onClick={() => onSelectSection(section)}
-                >
-                  <Icon aria-hidden size={20} />
-                  <span className="sidebar__text">
-                    <span className="sidebar__label">{section.label}</span>
-                    <span className="sidebar__description">{section.description}</span>
-                  </span>
-                </button>
-              </li>
-            )
-          })}
-        </ul>
-      </nav>
       <div className="sidebar__footer">
         <button
           type="button"

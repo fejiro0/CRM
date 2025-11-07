@@ -13,7 +13,11 @@ export function ContextPanel({ section, shortcuts }: ContextPanelProps) {
         <ul className="shortcut-list">
           {shortcuts.map((shortcut) => (
             <li key={shortcut.label}>
-              <button type="button" onClick={shortcut.action} className="shortcut-button">
+              <button 
+                type="button" 
+                onClick={shortcut.action} 
+                className="shortcut-button"
+              >
                 {shortcut.label}
               </button>
             </li>
@@ -23,9 +27,7 @@ export function ContextPanel({ section, shortcuts }: ContextPanelProps) {
       <section className="panel-block" aria-live="polite">
         <h2>Support &amp; Resources</h2>
         <ul className="resource-list">
-          <li>
-            Video walkthrough: Getting started with {section.label}
-          </li>
+          <li>Video walkthrough: Getting started with {section.label}</li>
           <li>Policy updates posted 2 days ago</li>
           <li>Live chat available 8am – 8pm</li>
         </ul>

@@ -1,6 +1,6 @@
 const currencyFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
-  currency: 'USD',
+  currency: 'GHS',
   maximumFractionDigits: 0
 })
 
@@ -11,7 +11,7 @@ export function formatCurrency(value: number) {
 export function formatCompactCurrency(value: number) {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'GHS',
     notation: 'compact',
     maximumFractionDigits: 1
   }).format(value)
